@@ -16,10 +16,8 @@ LOCAL_PATH := $(call my-dir)
 
 # Build only when BOARD_USES_ALSA_AUDIO is set
 ifeq ($(BOARD_USES_ALSA_AUDIO), true)
-ifeq ($(BOARD_USES_TINY_ALSA_AUDIO), true)
 
 include $(CLEAR_VARS)
-
 
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_CFLAGS := -D_POSIX_C_SOURCE=200809
@@ -32,11 +30,10 @@ LOCAL_C_INCLUDES += \
 
 LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa
 
-LOCAL_MODULE := audio.hdmi.$(TARGET_BOARD_PLATFORM)
+LOCAL_MODULE := audio.primary.hdmi
 LOCAL_MODULE_TAGS := optional
 LOCAL_CFLAGS += -Werror
 
 include $(BUILD_SHARED_LIBRARY)
 
-endif #BOARD_USES_TINY_ALSA_AUDIO
 endif #BOARD_USES_ALSA_AUDIO
